@@ -1,0 +1,69 @@
+.sidebar {
+    width: 16vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: $primary;
+    overflow: auto;
+    transform: translateX(0);
+    transition: all linear .5s;
+
+    padding-top: 7.8rem;
+    
+    @include breakpoint($tablet) {
+        width: 20vw;
+    }
+
+    @include breakpoint($mobile) {
+        transform: translateX(-100%);
+        width: 30vw;
+        z-index: 99;
+    }
+
+    @include breakpoint($mobile-small) {
+        width: 100vw;
+
+    }
+}
+
+.sidebar__item {
+    cursor: pointer;
+    transition: all linear .2s;
+
+
+    &:hover {
+        background-color: lighten($primary, 10%);
+    }
+
+    &.active {
+        background-color: lighten($primary, 5%);
+    }
+}
+
+
+.sidebar__link {
+    @include flex;
+    flex-direction: column;
+    color: $secondary;
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+
+.sidebar__icon {
+    width: 3.7vw;
+    margin-bottom: 1rem;
+
+    
+    @include breakpoint($mobile) {
+        width: 6vw;
+    }
+
+    @include breakpoint($mobile-small) {
+        width: 9vw;
+    }
+}
+

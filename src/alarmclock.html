@@ -1,0 +1,27 @@
+---
+layout: default
+title: Будильник
+---
+
+
+<section class="time">
+    <h1 class="time__title">Будильник</h1>
+    <div class="time__time nowTime">
+        00 : 00 : 00
+    </div>
+    <div class="time__date">
+        <span class="nowTimeDay"></span> - <span class="nowTimeDDMMYYYY"></span>
+    </div>
+    <div class="time__buttons">
+        <button id="btnSetAlarmclock" class="btn" type="button" data-modal="alarmclock-start">Поставить будильник</button>
+    </div>
+
+    <div class="time__alarmclock">
+        <img src="./assets/images/sidebar/alarmclock.svg" alt="" class="time__icon">
+        <h2 class="time__alarmclock-title">Будильник установлен на:</h2>
+        <div class="time__alarmclock-current" id="currentAlarmclock">
+            
+        </div>
+        <button class="btn" type="button" id="btnOffAlarmclock">Выключить будильник</button>
+    </div>
+</section>
