@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    
+    <!-- Useful meta tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="">
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/images/favicon/safari-pinned-tab.svg" color="#251a1a">
+    <link rel="shortcut icon" href="assets/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#251a1a">
+    <meta name="msapplication-config" content="assets/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#251a1a">
+    
+    <title>Таймер</title></head>
+<body>
+    <audio id="sound" src="./assets/sounds/timer.wav" type="audio/wav"></audio>
+    <div class="page">
+        <header class="header">
+            <div class="header__burger "></div>
+            <div class="header__logo">
+                <a href="index.html" class="header__link">TIME.ru</a>
+            </div>
+            <div class="header__settings">
+                <div class="header__theme">
+                    <img src="./assets/images/header/theme.svg" alt="" class="header__icon">
+                </div>
+            </div>
+        </header>
+
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar__list">
+                <li class="sidebar__item">
+                    <a href="index.html" class="sidebar__link">
+                        <img src="./assets/images/sidebar/clock.svg" alt="" class="sidebar__icon">
+                        Точное время
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="stopwatch.html" class="sidebar__link">
+                        <img src="./assets/images/sidebar/stopwatch.svg" alt="" class="sidebar__icon">
+                        Секундомер
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="timer.html" class="sidebar__link">
+                        <img src="./assets/images/sidebar/timer.svg" alt="" class="sidebar__icon">
+                        Таймер
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="alarmclock.html" class="sidebar__link">
+                        <img src="./assets/images/sidebar/alarmclock.svg" alt="" class="sidebar__icon">
+                        Будильник
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <section class="time">
+            <h1 class="time__title">Таймер</h1>
+            <div class="time__time time__time--timer">
+                <span class="timer__hours span-timer">01</span> :
+                <span class="timer__minutes span-timer">00</span> :
+                <span class="timer__seconds span-timer">00</span>
+            </div>
+            <div class="time__buttons">
+                <button id="startTimer" class="btn" type="button">Старт</button>
+                <button id="stopTimer" class="btn" type="button" disabled>Стоп</button>
+                <button id="resetTimer" class="btn" type="button" disabled>Сброс</button>
+                <button id="changeTimer" class="btn" type="button" data-modal="timer-start">Изменить таймер</button>
+            </div>
+        </section>
+    
+        <footer class="footer">
+            <div class="footer__logo">
+                <a href="#!" class="footer__logo-link">TIME.ru</a>
+            </div>
+            <div class="footer__contacts">
+                <a href="mailto:artiom.kochkin@yandex.ru" class="footer__link footer__link--lower">artiom.kochkin@yandex.ru</a>
+                <a href="tel:+79069967386" class="footer__link">+7 (906) 996-73-86</a>
+            </div>
+            <div class="footer__social">
+                <a href="https://vk.com/bastard300" class="footer__link">vk</a>
+                <a href="https://www.instagram.com/artiom_kch/" class="footer__link">instagram</a>
+                <a href="https://github.com/ArtiomKochkin" class="footer__link">github</a>
+            </div>
+            <div class="footer__copyright">
+                <p>Copyright ©2023 Артем Кочкин. Все права защищены.</p>
+            </div>
+        </footer>
+        <div class="modal modal--start" id="timer-start">
+            <div class="modal__content modal__content--start">
+                <div class="modal__header">
+                    <h2 class="modal__title">Изменить таймер</h2>
+                    <span class="modal__close close">&times;</span>
+                </div>
+                <div class="modal__main">
+                    <form action="/" method="post" class="modal__form">
+                        <div class="modal__item">
+                            <label for="hourTimer" class="modal__item-desc">Часы</label><br>
+                            <input class="modal__input" min="0" type="number" id="hourTimer" placeholder="0" value="0">
+                        </div>
+                        <div class="modal__item">
+                            <label for="minuteTimer" class="modal__item-desc">Минуты</label><br>
+                            <input class="modal__input" min="0" type="number" id="minuteTimer" placeholder="0" value="0">
+                        </div>
+                        <div class="modal__item">
+                            <label for="secondTimer" class="modal__item-desc">Секунды</label><br>
+                            <input class="modal__input" min="0" type="number" id="secondTimer" placeholder="0"  value="0">
+                        </div>
+                    </form>
+                    <div class="modal__error ">
+                        <h3 class="modal__error-title">Ошибка</h3>
+                        <div class="modal__error-item"></div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--modal close" type="button">Отмена</button>
+                    <button id="startTimerModal" class="btn btn--modal start" type="button" >Старт</button>
+                </div>
+            </div>
+        </div>        <div class="modal modal--finish" id="timer-finish">
+            <div class="modal__content modal__content--finish">
+                <div class="modal__header">
+                    <h2 class="modal__title">Таймер</h2>
+                    <span class="modal__close close">&times;</span>
+                </div>
+                <div class="modal__main">
+                    <img src="./assets/images/sidebar/timer.svg" alt="" class="modal__img">
+                    <div class="modal__time">
+                        00 : 00 : 00
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--modal close" type="button">ОК</button>
+                </div>
+            </div>
+        </div>        <div class="modal modal--start" id="alarmclock-start">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <h2 class="modal__title">Установить будильник</h2>
+                    <span class="modal__close close">&times;</span>
+                </div>
+                <div class="modal__main">
+                    <form action="/" method="post" class="modal__form">
+                        <div class="modal__item">
+                            <label for="hourAlarmclock" class="modal__item-desc">Часы</label><br>
+                            <input class="modal__input" type="number" id="hourAlarmclock" placeholder="0" min="0" max="23" value="0">
+                        </div>
+                        <div class="modal__item">
+                            <label for="minuteAlarmclock" class="modal__item-desc">Минуты</label><br>
+                            <input class="modal__input" type="number" id="minuteAlarmclock" placeholder="0" min="0" max="59" value="0">
+                        </div>
+                        <div class="modal__item">
+                            <label for="secondAlarmclock" class="modal__item-desc">Секунды</label><br>
+                            <input class="modal__input" type="number" id="secondAlarmclock" placeholder="0" min="0" max="59" value="0">
+                        </div>
+                    </form>
+                    <div class="modal__error ">
+                        <h3 class="modal__error-title">Ошибка</h3>
+                        <div class="modal__error-item"></div>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--modal close" type="button">Отмена</button>
+                    <button class="btn btn--modal start" id="btnAlarmclock" type="button" >Старт</button>
+                </div>
+            </div>
+        </div>        <div class="modal modal--finish" id="alarmclock-finish">
+            <div class="modal__content modal__content--finish" >
+                <div class="modal__header">
+                    <h2 class="modal__title">Будильник</h2>
+                    <span class="modal__close close">&times;</span>
+                </div>
+                <div class="modal__main">
+                    <img src="./assets/images/sidebar/alarmclock.svg" alt="" class="modal__img">
+                    <div class="modal__time" id="timeAlarmclockFinish">
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <button id="btnChangeAlarmClock" class="btn btn--modal" data-modal="alarmclock-start" type="button">Изменить будильник</button>
+                    <button class="btn btn--modal close" type="button" id="btnOffSound">Ок</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
